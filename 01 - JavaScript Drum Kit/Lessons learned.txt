@@ -1,0 +1,7 @@
+javaScript30: Lessons Learned
+
+01 - Drum Kit
+    keyEvents
+    Playing audio
+    Listening for "transitionEnd" event
+    Listening to animations

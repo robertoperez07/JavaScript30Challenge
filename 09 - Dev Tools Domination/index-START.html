@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Console Tricks!</title>
+</head>
+<body>
+
+ <!--  <p onClick="changeColor()">×BREAK×DOWN×</p> -->
+  <p style="text-align: center; font-family: arial">×BREAK×DOWN×</p>
+
+
+  <script>
+    const dogs = [{ name: 'Snickers', age: 2 }, { name: 'hugo', age: 8 }];
+
+    //Changing color
+    let hue = 0;
+
+    function changeColor(e) {
+      const p = document.querySelector('p');
+      p.style.color = `hsl(${hue}, 100%, 50%)`;
+      p.style.fontSize = '50px';
+      p.style.backgroundColor = 'black';
+
+      if (hue >= 360) {
+         hue = 0;
+     }
+      hue = hue+20;
+      console.log(hue);
+    }
+
+    //Change color for each click or key pressed
+    document.addEventListener('mousedown', changeColor);
+    window.addEventListener('keydown', changeColor);
+
+    // Regular
+    console.log('hello');
+
+    // Interpolated
+    console.log('Hello! I am a %s at SDSU', 'student');
+
+    var title = 'student';
+    console.log(`Hello I am a ${title}`);
+
+    // Styled
+    // console.log('%c Bigger text bro', 'font-size: 40px; background: blue');
+
+    // warning!
+    console.warn('%cO:', 'font-size:50px; color:black; background:yellow');
+
+    // Error :|
+    console.error('%cD:', 'font-size:50px; color:black; background:red');
+
+    // Info
+    console.info('FUN FACT: :)');
+
+    // Testing
+    // console.assert(1 === 2, 'That\'s wrong dude');
+    const p = document.querySelector('p');
+
+    console.assert(p.classList.contains('what'), 'That\'s wrong dude');
+
+    // clearing console
+    //console.clear();
+
+    // Viewing DOM Elements
+    console.log(p);
+    console.dir(p);
+
+    // Grouping together
+    dogs.forEach(dog => {
+      console.groupCollapsed(`${dog.name}`);
+      console.log(`This is ${dog.name}`);
+      console.log(`${dog.name} is ${dog.age} years old`);
+      console.log(`${dog.name} is ${dog.age * 7} dog years old`);
+      console.groupEnd(`${dog.name}`);
+    });
+
+    // counting
+    console.count('hey');
+    console.count('bro');
+    console.count('hey');
+    console.count('hey');
+    console.count('bro');
+
+    // timing
+    console.time('fetching data');
+    fetch('https://gist.githubusercontent.com/Miserlou/c5cd8364bf9b2420bb29/raw/2bf258763cdddd704f8ffd3ea9a3e81d25e2c6f6/cities.json')
+      .then(data => data.json())
+      .then(data => {
+        console.timeEnd('fetching data');
+        console.log(data);
+      });
+
+    // table
+    console.table(dogs);
+  </script>
+</body>
+</html>
